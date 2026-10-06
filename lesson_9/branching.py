@@ -1,20 +1,18 @@
 # CensorWord
 """
-Implement censor_words(text, banned_word). 
-Return a new string where every occurrence of banned_word is replaced with "***". 
-The match is case-sensitive. Do not use import or regular expressions.
+Implement receipt_formatter(name, quantity, price).
+Calculate subtotal as quantity multiplied by price.
+Calculate tax as 7.5 percent of subtotal.
+Calculate total as subtotal plus tax.
+Return a four-line report with labels Customer, Subtotal, Tax, and Total.
+Round subtotal, tax, and total to 2 decimal places.
 """
 
-def censor_words(text, banned_word):
-    split_text = text.split()
-    words = []
-    i = 0
-    while i < len(split_text):
-        cha = split_text[i]
-        if cha == banned_word:
-            words.append("***")
-        else:
-            words.append(cha)
-        i+= 1
-    return " ".join(words)
-print(censor_words("this code is bad", "bad"))
+def receipt_formatter(name, quantity, price):
+    quantity = float(quantity)
+    price = float(price)
+    subtotal = round((quantity *price), 2)
+    tax = round(((7.5/100)*subtotal), 2)
+    total = round((subtotal+ tax), 2)
+    return f"Customer: {name}\nSubtotal: {subtotal}\nTax: {tax}\nTotal: {total}"
+print(receipt_formatter("ada", 2, 100))
